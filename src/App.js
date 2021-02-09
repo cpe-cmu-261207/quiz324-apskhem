@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [ name, setName ] = useState("");
-  const [ gender, setGender ] = useState("male");
-  const [ age, setAge ] = useState(0);
+  const [ gender, setGender ] = useState("");
+  const [ age, setAge ] = useState("");
   const [ petList, setPetList ] = useState([]);
 
   //load locationStorage
@@ -31,8 +31,8 @@ function App() {
     setPetList([ ...petList, { name, gender, age } ]);
 
     setName("");
-    setGender("male");
-    setAge("0");
+    setGender("");
+    setAge("");
   }
 
   // render
@@ -48,13 +48,14 @@ function App() {
             className="input"
             type="text"
             placeholder="e.q Coco"
+            required
             //update related state based on event
           ></input>
         </div>
 
         <div className="field">
           <label className="label">Gender</label>
-          <select value={gender} onChange={(e) => setGender(e.target.value)} className="input" type="text" placeholder="Please select ..">
+          <select value={gender} onChange={(e) => setGender(e.target.value)} className="input" type="text" placeholder="Please select .." required>
             <option value="" disabled selected hidden>
               -- Select Gender --
             </option>
@@ -65,7 +66,7 @@ function App() {
 
         <div className="field">
           <label className="label">Age</label>
-          <input value={age} onChange={(e) => setAge(e.target.valueAsNumber)} className="input" type="number" placeholder="e.q 5"></input>
+          <input value={age} onChange={(e) => setAge(e.target.valueAsNumber)} className="input" type="number" placeholder="e.q 5" required></input>
         </div>
 
         <button className="button is-danger is-fullwidth">Submit</button>
